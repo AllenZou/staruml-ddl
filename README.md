@@ -3,6 +3,11 @@ DDL Extension for StarUML
 
 This extension for StarUML (http://staruml.io) support to generate DDL (Data Definition Language) from ERD. Install this extension from Extension Manager of StarUML.
 
+Features
+----------
+1. mysql table comment
+2. mysql column comment
+
 How to use
 ----------
 
