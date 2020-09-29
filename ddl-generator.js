@@ -119,6 +119,14 @@ class DDLGenerator {
     if (elem.primaryKey || !elem.nullable) {
       line += ' NOT NULL'
     }
+    // mysql column comment
+    if (options.dbms === 'mysql') {
+        var documentation = elem.documentation;
+        if (!!documentation) {
+            line += ' COMMENT '
+            line += codegen.asComment(documentation)
+        }
+    }
     return line
   }
 
@@ -231,6 +239,19 @@ class DDLGenerator {
     codeWriter.outdent()
     codeWriter.writeLine(');')
     codeWriter.writeLine()
+
+    // mysql table comment
+    if (options.dbms === 'mysql') {
+        var documentation = elem.documentation;
+        if (!!documentation) {
+            codeWriter.writeLine("ALTER TABLE " + self.getId(elem.name, options));
+            codeWriter.indent();
+            codeWriter.writeLine("COMMENT = " + codegen.asComment(documentation) + ";");
+            codeWriter.outdent();
+        }
+        (!documentation && comments.length == 0) || codeWriter.writeLine();
+    }
+
   }
 
   /**

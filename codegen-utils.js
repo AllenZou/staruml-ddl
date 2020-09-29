@@ -75,4 +75,22 @@ class CodeWriter {
 
 }
 
+function replaceAll(str, search, replacement) {
+	return str.split(search).join(replacement);
+};
+
+function asComment(comment) {
+	if (!comment)
+		return null;
+	var escapeCode = "";
+	if (comment.indexOf('\\') > -1) {
+		escapeCode = 'E';
+		comment = replaceAll(comment, "\\", "\\\\\\\\");
+	}
+	comment = replaceAll(comment, "'", "''");
+	return escapeCode + "'" + comment + "'";
+}
+
 exports.CodeWriter = CodeWriter
+exports.replaceAll = replaceAll;
+exports.asComment = asComment;
