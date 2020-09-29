@@ -5,8 +5,8 @@ This extension for StarUML (http://staruml.io) support to generate DDL (Data Def
 
 Features
 ----------
-1. mysql table comment
-2. mysql column comment
+1. mysql DDL + table comment
+2. mysql DDL + column comment
 
 How to use
 ----------
