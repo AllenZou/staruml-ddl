@@ -249,7 +249,7 @@ class DDLGenerator {
             codeWriter.writeLine("COMMENT = " + codegen.asComment(documentation) + ";");
             codeWriter.outdent();
         }
-        (!documentation && comments.length == 0) || codeWriter.writeLine();
+        (!documentation) || codeWriter.writeLine();
     }
 
   }
